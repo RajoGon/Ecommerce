@@ -1,0 +1,40 @@
+		<div id="sign" class="modal fade" role="dialog"> 
+		  <div class="modal-dialog">
+
+		    <!-- Modal content-->
+		    <div class="form-group" id="sign2">
+			    <form>
+					<h1>Signup</h1>
+					<div [hidden]="showError" id="userExists" class="alert alert-danger">
+  					<strong>User Already Exists, try again!</strong> 
+					</div>
+					<div [hidden]="showSuccess" id="userSuccess" class="alert alert-success">
+  					<strong>Successfully registered, please login.</strong> 
+					</div>
+					<div id="uname2">
+						<input value="Jonnyuser" #username class="form-control" type="text" placeholder="Username" required id="username" />
+					</div>
+					<div id="">
+						<input value="Jonny" #firstname class="form-control" type="text" placeholder="First Name" required id="fname" />
+					</div>
+					<div id="">
+						<input value="Croose" #lastname class="form-control" type="text" placeholder="Last Name" required id="lname" />
+					</div>
+					<div>
+						<input value="jonny123" #password class="form-control" type="password" placeholder="Password" required id="password" />
+					</div>
+					<div>
+						<input value="jonny@gmail.com" #email class="form-control" type="email" placeholder="Email" required id="email" />
+					</div>
+					<div>
+						<input value="987654321" #phone class="form-control" type="text" placeholder="Phone number" required id="phone" />
+					</div>
+					<div>
+						<input id="signinbutton" type="button" value="Log in" (click)="registerUser(username.value,firstname.value,lastname.value,password.value,email.value,phone.value)"><br>
+						<a href="#" data-target="#log" data-toggle="modal" data-dismiss="modal">Already have an account? Login</a>
+					</div>
+				</form>
+			</div>
+
+		  </div>
+		</div>
