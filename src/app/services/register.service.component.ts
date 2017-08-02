@@ -54,4 +54,13 @@ export class RegisterService{
                     .map((response: Response)=>response.json());   
     }
 
+
+    getUserInfo(username:any,loginToken:any){
+        console.log('uname is ',username, ' token is ',loginToken);
+        let headers = new Headers(); 
+        headers.append('auth-token',loginToken);
+        let options = new RequestOptions({headers:headers});
+        return this._http.get('http://192.168.3.144:9000/user?userId='+username,options).map((response: Response)=>response.json()); 
+        }
+
 }

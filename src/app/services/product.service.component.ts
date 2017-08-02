@@ -30,5 +30,20 @@ export class ProductService{
     getProduct(){
         return this.productToView;
     }
+    postNewAd(token:any, title:string,category:any,description:any,uname:any){
+        let ad = {
+            "title" : title,
+            "name" : uname,
+            "category" :category,
+            "description" : description,
+         };
+            console.log(ad);
+            let headers = new Headers();
+            headers.append('Content-Type', 'application/json');
+            headers.append('auth-token',token);
+            let options = new RequestOptions({ headers: headers });
+            return this._http.post('http://192.168.3.144:9000/postAd',JSON.stringify(ad), options).map((response: Response)=> response.json());
+}
+
 
 }

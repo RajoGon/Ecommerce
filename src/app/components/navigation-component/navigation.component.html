@@ -12,7 +12,7 @@
 		     		 
 		    	</ul>
 		    	<ul class="nav navbar-nav navbar-right">	
-		    		<li><a *ngIf="loginToken!=null" href="myacc.html#collapse3"><span class="glyphicon glyphicon-open"></span> <button type="button" class="btn btn-primary">Post an Ad</button></a></li>
+		    		<li><a *ngIf="loginToken!=null" routerLink="/myaccount"><span class="glyphicon glyphicon-open"></span> <button type="button" class="btn btn-primary">Post an Ad</button></a></li>
 		    		<li><a *ngIf="loginToken!=null" routerLink="/myaccount" routerLinkActive="active"> <span class="glyphicon glyphicon-briefcase"></span> My Account</a></li>
 
 							<li *ngIf="loginToken==null"><a href="#" data-toggle="modal" data-target="#sign"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
