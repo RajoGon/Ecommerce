@@ -1,24 +1,16 @@
 		<div id="cat">
-				<div class="row" >
-
+				<div class="row">
 				<div class=" col-md-2 dropdown" id="catdropdown">
   				<button id="catbutton" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Categories
   				<span class="caret"></span></button>
   				<ul class="dropdown-menu" id="categorydropdown">
-
 	  				<div class="row>">
-		  				<div class="col-md-3">
-		    				<li><a href="#"><span><img src="images/vehicle.png" height="25px"></span> Vehicles</a></li>
+							<div class="col-md-3">
+		    				<li><a  (click)="setCategory('All Products')" href="#"><span><img src="images/vehicle.png" height="25px"></span> All</a></li>
 		    			</div>
-		    			<div class="col-md-3">
-		    				<li><a href="#"><img src="images/realestate.png" height="25px"> Real Estate</a></li>
-		    			</div>	
-		    			<div class="col-md-3">
-	    					<li><a href="#"><img src="images/electronics.png" height="25px"> Electronics</a></li>
-	    				</div>
-	    				<div class="col-md-3">
-	    					<li><a href="#"><img src="images/fashion.png" height="25px"> Fashion</a></li>
-	    				</div>
+		  				<div class="col-md-3" *ngFor="let x of categoryList">
+		    				<li><a  (click)="setCategory(x)" href="#"><span><img src="images/vehicle.png" height="25px"></span> {{x}}</a></li>
+		    			</div>
 	    			</div>
   				</ul>
 				</div>
@@ -75,4 +67,4 @@
 										</div>
 		</div>
 		<!-- Products -->
-		
+		<h3>&nbsp;&nbsp;<b>{{selectedCategory}}</b> </h3><hr>

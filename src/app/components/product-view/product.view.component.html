@@ -1,4 +1,4 @@
-					<h3>&nbsp;&nbsp;<b>Product Name : An independant bungalow </b> </h3><hr>
+					<h3>&nbsp;&nbsp;<b>Product Name :{{productToView.title}} </b> </h3><hr>
 		<br>
 									<div id="adCarousel" class="carousel slide" data-ride="carousel">
 										  <!-- Indicators -->
@@ -39,7 +39,7 @@
 									Posted on
 								</div>
 								<div class="col-md-6">
-									14/07/2017
+									{{productToView.createdDate}}
 								</div>
 				    		</div>
 				    		<div class="row panel-body">
@@ -47,7 +47,7 @@
 								Product Name
 								</div>
 								<div class="col-md-6">
-								Laptop
+								{{productToView.title}}
 								</div>
 							</div>
 							<div class="row panel-body">
@@ -55,50 +55,57 @@
 								Category
 								</div>
 								<div class="col-md-6">
-								Electronics
+								{{productToView.category}}
 								</div>
 							</div>
 							<div class="row panel-body">
+								<div class="col-md-6">
+								Posted By
+								</div>
+								<div class="col-md-6">
+								{{productToView.name}}
+								</div>
+							</div>
+							<!--<div class="row panel-body">
 								<div class="col-md-6">
 								Price
 								</div>
 								<div class="col-md-6">
 								1,14,000
 								</div>
-							</div>
+							</div>-->
 							<div class="row panel-body">
 								<div class="col-md-6">
 								Description
 								</div>
 								<div class="col-md-6">
-								An alienware laptop which the latest nvidia 1000 series gpu and an overclocked cpu. 
-								An alienware laptop which the latest nvidia 1000 series gpu and an overclocked cpu
+								{{productToView.description}}
 								</div>
 							</div>
-							<div class="row panel-body">
+							<!--<div class="row panel-body">
 					    		<div class="col-md-6">
 									Contact Seller
 								</div>
 								<div class="col-md-6">
 									9766110818
 								</div>
-				    		</div>
-				    		<div class="row panel-body">
+				    	</div>-->
+				    		<!--<div class="row panel-body">
 					    		<div class="col-md-6">
 									Email Seller
 								</div>
 								<div class="col-md-6">
 									Rajorshi.Gon@Xoriant.com
 								</div>
-				    		</div>
-				    		<div class="row panel-body">
+				    		</div>-->
+				    		<!--<div class="row panel-body">
 					    		<div class="col-md-6">
 									Message Seller
 								</div>
 								<div class="col-md-6">
 									<form class="form-horizontal">
 
-										<!-- Textarea -->
+									
 										<div class="form-group">
 
 										  <div class="col-md-12">                     
@@ -106,7 +113,7 @@
 										  </div>
 										</div>
 
-										<!-- Button -->
+										
 										<div class="form-group">
 										  <div class="col-md-12">
 										    <button id="sendmessage" name="sendmessage" class="btn btn-primary">Send</button>
@@ -115,5 +122,5 @@
 										</form>
 
 								</div>
-				    		</div>
+				    		</div>-->
 				    </div>

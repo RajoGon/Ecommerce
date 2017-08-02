@@ -4,15 +4,22 @@
 		    <div class="form-group" id="login">
 			    <form action="">
 					<h1>Login Form</h1>
+					<div [hidden]="showError" id="userExists" class="alert alert-danger">
+  					<strong>Invalid credentials, please try again.</strong> 
+					</div>
+					<div [hidden]="showSuccess" id="userSuccess" class="alert alert-success">
+  					<strong>Successfully logged in. Redirecting to home page...</strong> 
+					</div>
 					<div id="uname">
-						<input #username class="form-control" type="text" placeholder="Username" required="" id="username" />
+						<input #username required class="form-control" type="text" placeholder="Username" required="" id="username" />
 					</div>
 					<div>
-						<input #password class="form-control" type="password" placeholder="Password" required="" id="password" />
+						<input #password required class="form-control" type="password" placeholder="Password" required="" id="password" />
 					</div>
 					<div>
 						<input id="loginbutton" type="button" (click)="loginUser(username.value,password.value)" value="Log in"><br>
 						<a href="#">Lost your password?</a>
+						<a data-dismiss="modal" id="closeModal" data-dismiss="modal"></a>
 						<a href="#sign" data-target="#sign" data-toggle="modal" data-dismiss="modal">Register</a>
 					</div>
 				</form>

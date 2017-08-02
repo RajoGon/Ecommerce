@@ -3,13 +3,13 @@ import{RegisterService} from '../../../services/register.service.component';
 
 @Component({
   selector: 'register',
-  templateUrl:'./register.component.html', 
-  providers:[RegisterService]
+  templateUrl:'./register.component.html'
 })
 export class RegisterComponent { 
     userdata:any;
     public showError:any=true;
     public showSuccess:any=true;
+    public data:any;
     constructor(private registerService: RegisterService) { 
     }
     registerUser(username:any,firstname:any,lastname:any,password:any,email:any,phone:any){
@@ -25,11 +25,16 @@ export class RegisterComponent {
            
             (response)=> {
                 this.showSuccess=false;
-                this.showError=true
+                this.showError=true;
+                this.data = response;
+                console.log(this.data);
             },
             (error) => {
                 this.showError=false;
-                 this.showSuccess=true
+                 this.showSuccess=true;
+                 this.data = error;
+                 console.log(error);
+                 
             }
 
        );

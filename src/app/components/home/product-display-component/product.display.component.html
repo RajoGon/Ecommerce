@@ -1,7 +1,65 @@
 		<div class="col-md-9"> <!-- All products start -->
 		<div class="containter" id="allproducts">
 			<div class="row products">
-			<a routerLink="/productview">
+			<a routerLink="/productview" (click)="goToProduct(x)" *ngFor="let x of productList">
+				<div class="col-md-4 hvr-float-shadow" style="margin-bottom: 20px">
+						<img class="img-responsive" src="images/prod1.jpg" alt="Chania" >
+						
+						<div class="row desc">
+							<div class="col-md-6">
+							Product Name
+							</div>
+							<div class="col-md-6">
+							{{x.title| slice:0:15}}
+							</div>
+						</div>
+						<div class="row desc">
+							<div class="col-md-6">
+							Category
+							</div>
+							<div class="col-md-6">
+							{{x.category}}
+							</div>
+						</div>
+						<div class="row desc">
+							<div class="col-md-6">
+							Posted By
+							</div>
+							<div class="col-md-6">
+							{{x.name | slice:0:15}}
+							</div>
+						</div>
+						<!--<div class="row desc">
+							<div class="col-md-6">
+							Posted on 
+							</div>
+							<div class="col-md-6">
+							14/07/2017
+							</div>
+						</div>-->
+						<!--<div class="row desc">
+							<div class="col-md-6">
+							Price 
+							</div>
+							<div class="col-md-6">
+							1,41,000
+							</div>
+						</div>-->
+						<div class="desc2">
+							<div class="row desc">
+								<div class="col-md-12">
+								Description
+								</div>
+							</div>
+							<div class="row desc">
+								<div class="col-md-12">
+								{{x.description}} 
+								</div>
+							</div>
+						</div>
+				</div>
+			</a>
+				<!--<a href="productview.html">
 				<div class="col-md-4 hvr-float-shadow">
 						<img class="img-responsive" src="images/prod1.jpg" alt="Chania" >
 						
@@ -116,426 +174,12 @@
 							</div>
 						</div>
 				</div>
-			</a>
-				<a href="productview.html">
-				<div class="col-md-4 hvr-float-shadow">
-						<img class="img-responsive" src="images/prod1.jpg" alt="Chania" >
-						
-						<div class="row desc">
-							<div class="col-md-6">
-							Product Name
-							</div>
-							<div class="col-md-6">
-							Laptop
-							</div>
-						</div>
-						<div class="row desc">
-							<div class="col-md-6">
-							Category
-							</div>
-							<div class="col-md-6">
-							Electronics
-							</div>
-						</div>
-						<div class="row desc">
-							<div class="col-md-6">
-							Posted By
-							</div>
-							<div class="col-md-6">
-							Aditya
-							</div>
-						</div>
-						<div class="row desc">
-							<div class="col-md-6">
-							Posted on 
-							</div>
-							<div class="col-md-6">
-							14/07/2017
-							</div>
-						</div>
-						<div class="row desc">
-							<div class="col-md-6">
-							Price 
-							</div>
-							<div class="col-md-6">
-							1,41,000
-							</div>
-						</div>
-						<div class="desc2">
-							<div class="row desc">
-								<div class="col-md-12">
-								Description
-								</div>
-							</div>
-							<div class="row desc">
-								<div class="col-md-12">
-								An alienware laptop which the latest nvidia 1000 series gpu and an overclocked cpu. 
-								</div>
-							</div>
-						</div>
-				</div>
-			</a>
+			</a>-->
 
 			</div>
 		<!-- </div> -->
 		<br>
-		<!-- Second row -->
-		<!-- <div class="containter" id="allproducts"> -->
-			<div class="row products">
-			<a href="productview.html">
-				<div class="col-md-4 hvr-float-shadow">
-						<img class="img-responsive" src="images/prod1.jpg" alt="Chania" >
-						
-						<div class="row desc">
-							<div class="col-md-6">
-							Product Name
-							</div>
-							<div class="col-md-6">
-							Laptop
-							</div>
-						</div>
-						<div class="row desc">
-							<div class="col-md-6">
-							Category
-							</div>
-							<div class="col-md-6">
-							Electronics
-							</div>
-						</div>
-						<div class="row desc">
-							<div class="col-md-6">
-							Posted By
-							</div>
-							<div class="col-md-6">
-							Aditya
-							</div>
-						</div>
-						<div class="row desc">
-							<div class="col-md-6">
-							Posted on 
-							</div>
-							<div class="col-md-6">
-							14/07/2017
-							</div>
-						</div>
-						<div class="row desc">
-							<div class="col-md-6">
-							Price 
-							</div>
-							<div class="col-md-6">
-							1,41,000
-							</div>
-						</div>
-						<div class="desc2">
-							<div class="row desc">
-								<div class="col-md-12">
-								Description
-								</div>
-							</div>
-							<div class="row desc">
-								<div class="col-md-12">
-								An alienware laptop which the latest nvidia 1000 series gpu and an overclocked cpu. 
-								</div>
-							</div>
-						</div>
-				</div>
-			</a>
-				<a href="productview.html">
-				<div class="col-md-4 hvr-float-shadow">
-						<img class="img-responsive" src="images/prod1.jpg" alt="Chania" >
-						
-						<div class="row desc">
-							<div class="col-md-6">
-							Product Name
-							</div>
-							<div class="col-md-6">
-							Laptop
-							</div>
-						</div>
-						<div class="row desc">
-							<div class="col-md-6">
-							Category
-							</div>
-							<div class="col-md-6">
-							Electronics
-							</div>
-						</div>
-						<div class="row desc">
-							<div class="col-md-6">
-							Posted By
-							</div>
-							<div class="col-md-6">
-							Aditya
-							</div>
-						</div>
-						<div class="row desc">
-							<div class="col-md-6">
-							Posted on 
-							</div>
-							<div class="col-md-6">
-							14/07/2017
-							</div>
-						</div>
-						<div class="row desc">
-							<div class="col-md-6">
-							Price 
-							</div>
-							<div class="col-md-6">
-							1,41,000
-							</div>
-						</div>
-						<div class="desc2">
-							<div class="row desc">
-								<div class="col-md-12">
-								Description
-								</div>
-							</div>
-							<div class="row desc">
-								<div class="col-md-12">
-								An alienware laptop which the latest nvidia 1000 series gpu and an overclocked cpu. 
-								</div>
-							</div>
-						</div>
-				</div>
-			</a>
-				<a href="productview.html">
-				<div class="col-md-4 hvr-float-shadow">
-						<img class="img-responsive" src="images/prod1.jpg" alt="Chania" >
-						
-						<div class="row desc">
-							<div class="col-md-6">
-							Product Name
-							</div>
-							<div class="col-md-6">
-							Laptop
-							</div>
-						</div>
-						<div class="row desc">
-							<div class="col-md-6">
-							Category
-							</div>
-							<div class="col-md-6">
-							Electronics
-							</div>
-						</div>
-						<div class="row desc">
-							<div class="col-md-6">
-							Posted By
-							</div>
-							<div class="col-md-6">
-							Aditya
-							</div>
-						</div>
-						<div class="row desc">
-							<div class="col-md-6">
-							Posted on 
-							</div>
-							<div class="col-md-6">
-							14/07/2017
-							</div>
-						</div>
-						<div class="row desc">
-							<div class="col-md-6">
-							Price 
-							</div>
-							<div class="col-md-6">
-							1,41,000
-							</div>
-						</div>
-						<div class="desc2">
-							<div class="row desc">
-								<div class="col-md-12">
-								Description
-								</div>
-							</div>
-							<div class="row desc">
-								<div class="col-md-12">
-								An alienware laptop which the latest nvidia 1000 series gpu and an overclocked cpu. 
-								</div>
-							</div>
-						</div>
-				</div>
-			</a>
-			</div>
-			<br>
-			<!-- Third row -->
-			<div class="row products">
-			<a href="productview.html">
-				<div class="col-md-4 hvr-float-shadow">
-						<img class="img-responsive" src="images/prod1.jpg" alt="Chania" >
-						
-						<div class="row desc">
-							<div class="col-md-6">
-							Product Name
-							</div>
-							<div class="col-md-6">
-							Laptop
-							</div>
-						</div>
-						<div class="row desc">
-							<div class="col-md-6">
-							Category
-							</div>
-							<div class="col-md-6">
-							Electronics
-							</div>
-						</div>
-						<div class="row desc">
-							<div class="col-md-6">
-							Posted By
-							</div>
-							<div class="col-md-6">
-							Aditya
-							</div>
-						</div>
-						<div class="row desc">
-							<div class="col-md-6">
-							Posted on 
-							</div>
-							<div class="col-md-6">
-							14/07/2017
-							</div>
-						</div>
-						<div class="row desc">
-							<div class="col-md-6">
-							Price 
-							</div>
-							<div class="col-md-6">
-							1,41,000
-							</div>
-						</div>
-						<div class="desc2">
-							<div class="row desc">
-								<div class="col-md-12">
-								Description
-								</div>
-							</div>
-							<div class="row desc">
-								<div class="col-md-12">
-								An alienware laptop which the latest nvidia 1000 series gpu and an overclocked cpu. 
-								</div>
-							</div>
-						</div>
-				</div>
-			</a>
-				<a href="productview.html">
-				<div class="col-md-4 hvr-float-shadow">
-						<img class="img-responsive" src="images/prod1.jpg" alt="Chania" >
-						
-						<div class="row desc">
-							<div class="col-md-6">
-							Product Name
-							</div>
-							<div class="col-md-6">
-							Laptop
-							</div>
-						</div>
-						<div class="row desc">
-							<div class="col-md-6">
-							Category
-							</div>
-							<div class="col-md-6">
-							Electronics
-							</div>
-						</div>
-						<div class="row desc">
-							<div class="col-md-6">
-							Posted By
-							</div>
-							<div class="col-md-6">
-							Aditya
-							</div>
-						</div>
-						<div class="row desc">
-							<div class="col-md-6">
-							Posted on 
-							</div>
-							<div class="col-md-6">
-							14/07/2017
-							</div>
-						</div>
-						<div class="row desc">
-							<div class="col-md-6">
-							Price 
-							</div>
-							<div class="col-md-6">
-							1,41,000
-							</div>
-						</div>
-						<div class="desc2">
-							<div class="row desc">
-								<div class="col-md-12">
-								Description
-								</div>
-							</div>
-							<div class="row desc">
-								<div class="col-md-12">
-								An alienware laptop which the latest nvidia 1000 series gpu and an overclocked cpu. 
-								</div>
-							</div>
-						</div>
-				</div>
-			</a>
-				<a href="productview.html">
-				<div class="col-md-4 hvr-float-shadow">
-						<img class="img-responsive" src="images/prod1.jpg" alt="Chania" >
-						
-						<div class="row desc">
-							<div class="col-md-6">
-							Product Name
-							</div>
-							<div class="col-md-6">
-							Laptop
-							</div>
-						</div>
-						<div class="row desc">
-							<div class="col-md-6">
-							Category
-							</div>
-							<div class="col-md-6">
-							Electronics
-							</div>
-						</div>
-						<div class="row desc">
-							<div class="col-md-6">
-							Posted By
-							</div>
-							<div class="col-md-6">
-							Aditya
-							</div>
-						</div>
-						<div class="row desc">
-							<div class="col-md-6">
-							Posted on 
-							</div>
-							<div class="col-md-6">
-							14/07/2017
-							</div>
-						</div>
-						<div class="row desc">
-							<div class="col-md-6">
-							Price 
-							</div>
-							<div class="col-md-6">
-							1,41,000
-							</div>
-						</div>
-						<div class="desc2">
-							<div class="row desc">
-								<div class="col-md-12">
-								Description
-								</div>
-							</div>
-							<div class="row desc">
-								<div class="col-md-12">
-								An alienware laptop which the latest nvidia 1000 series gpu and an overclocked cpu. 
-								</div>
-							</div>
-						</div>
-				</div>
-			</a>
 
-			</div>
 
 		</div>
 		</div> <!-- All products end -->

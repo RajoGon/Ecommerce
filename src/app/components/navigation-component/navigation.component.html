@@ -12,12 +12,14 @@
 		     		 
 		    	</ul>
 		    	<ul class="nav navbar-nav navbar-right">	
-		    		<li><a href="myacc.html#collapse3"><span class="glyphicon glyphicon-open"></span> <button type="button" class="btn btn-primary">Post an Ad</button></a></li>
-		    		<li><a routerLink="/myaccount" routerLinkActive="active"> <span class="glyphicon glyphicon-briefcase"></span> My Account</a></li>
-		      		<li ><a href="#" data-toggle="modal" data-target="#sign"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-		      		<li ><a href="#" data-toggle="modal" data-target="#log"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-		    	</ul>
+		    		<li><a *ngIf="loginToken!=null" href="myacc.html#collapse3"><span class="glyphicon glyphicon-open"></span> <button type="button" class="btn btn-primary">Post an Ad</button></a></li>
+		    		<li><a *ngIf="loginToken!=null" routerLink="/myaccount" routerLinkActive="active"> <span class="glyphicon glyphicon-briefcase"></span> My Account</a></li>
+
+							<li *ngIf="loginToken==null"><a href="#" data-toggle="modal" data-target="#sign"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+		      				<li *ngIf="loginToken==null"><a href="#" data-toggle="modal" data-target="#log"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>					
+					<li *ngIf="loginToken!=null"><a href="#" (click)="logoutUser()"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>				
+				</ul>
   			</div>
 		</nav>
-		<login></login>
+		<login (childEvent)="childData=$event"></login>
 		<register></register>
