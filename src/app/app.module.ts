@@ -2,6 +2,7 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http'; 
 import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent }  from './app.component';
 import { NavigationComponent }  from './components/navigation-component/navigation.component';
@@ -18,7 +19,7 @@ import { ProductViewComponent }  from './components/product-view/product.view.co
 
 
 @NgModule({
-  imports:      [ BrowserModule,HttpModule,RouterModule.forRoot([
+  imports:      [ BrowserModule,FormsModule,HttpModule,RouterModule.forRoot([
                                                                   {path: '', component: HomeComponent},
                                                                   {path: 'myaccount', component: MyAccountComponent},
                                                                   {path: 'productview', component: ProductViewComponent}

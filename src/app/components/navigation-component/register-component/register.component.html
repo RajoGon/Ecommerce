@@ -3,7 +3,7 @@
 
 		    <!-- Modal content-->
 		    <div class="form-group" id="sign2">
-			    <form>
+			    <form #signupForm="ngForm" novalidate>
 					<h1>Signup</h1>
 					<div [hidden]="showError" id="userExists" class="alert alert-danger">
   					<strong>User Already Exists, try again!</strong> 
@@ -11,26 +11,50 @@
 					<div [hidden]="showSuccess" id="userSuccess" class="alert alert-success">
   					<strong>Successfully registered, please login.</strong> 
 					</div>
-					<div id="uname2">
-						<input value="Jonnyuser" #username class="form-control" type="text" placeholder="Username" required id="username" />
+					<div id="uname22">
+						<input name="userName" minlength="3" #username #usernameRef="ngModel" class="form-control" type="text" placeholder="Username" required id="username" ngModel />
 					</div>
-					<div id="">
-						<input value="Jonny" #firstname class="form-control" type="text" placeholder="First Name" required id="fname" />
+					<div id="uname3" *ngIf="usernameRef.errors && usernameRef.touched" class="alert alert-danger">
+						<div [hidden]="!usernameRef.errors.required" > Please enter a username</div>
+							<div [hidden]="!usernameRef.errors.minlength"> Username needs minimum 3 characters.</div>
 					</div>
-					<div id="">
-						<input value="Croose" #lastname class="form-control" type="text" placeholder="Last Name" required id="lname" />
+						<div id="uname22">
+						<input name="firstName" #nameModelRef="ngModel" #firstname class="form-control" type="text" placeholder="First Name" required id="fname" ngModel />
+					</div>
+					<div id="fnameError" *ngIf="nameModelRef.errors" [hidden]="nameModelRef.untouched && (nameModelRef.valid || nameModelRef.pristine)" class="alert alert-danger">
+							Please enter first name
+					</div>
+					<div id="uname22">
+						<input name="lastName" #lastname #LnameModelRef="ngModel" class="form-control" type="text" placeholder="Last Name" required id="lname" ngModel/>
+					</div>
+					<div id="lnameError" *ngIf="LnameModelRef.errors" [hidden]="LnameModelRef.untouched && (LnameModelRef.valid || LnameModelRef.pristine)" class="alert alert-danger">
+							Please enter last name
+						</div>
+					<div id="uname22"> 
+						<input name="password" #password #passwordRef="ngModel" class="form-control" type="password" placeholder="Password" required minlength="5" id="password" ngModel/>
+					</div>
+						<!--<div id="passwordError" [hidden]="passwordRef.untouched && (passwordRef.valid || passwordRef.pristine)" class="alert alert-danger" >
+							Please enter a password
+						</div>-->
+					<div id="passwordError" *ngIf="passwordRef.errors && passwordRef.touched" class="alert alert-danger">
+						<div [hidden]="!passwordRef.errors.required" > Please enter a password</div>
+							<div [hidden]="!passwordRef.errors.minlength"> Password needs minimum 5 characters.</div>
+					</div>
+					<div id="uname22">
+						<input name="email" #email #emailRef="ngModel" required class="form-control" type="email" placeholder="Email" id="email" ngModel/>
+					</div>
+					<div id="emailError" *ngIf="emailRef.errors && emailRef.touched" class="alert alert-danger">
+						<div [hidden]="!emailRef.errors.required" > Please enter an amail</div>
+							<div [hidden]="!emailRef.errors.valid"> Email is not valid.</div>
+					</div>
+					<div id="uname22">
+						<input name="phone" #phoneRef="ngModel" #phone class="form-control" type="text" placeholder="Phone number" required id="phone" ngModel/>
+					</div>
+					<div id="phoneError" *ngIf="phoneRef.errors" [hidden]="phoneRef.untouched && (phoneRef.valid || phoneRef.pristine)" class="alert alert-danger">
+							Please a phone number.
 					</div>
 					<div>
-						<input value="jonny123" #password class="form-control" type="password" placeholder="Password" required id="password" />
-					</div>
-					<div>
-						<input value="jonny@gmail.com" #email class="form-control" type="email" placeholder="Email" required id="email" />
-					</div>
-					<div>
-						<input value="987654321" #phone class="form-control" type="text" placeholder="Phone number" required id="phone" />
-					</div>
-					<div>
-						<input id="signinbutton" type="button" value="Log in" (click)="registerUser(username.value,firstname.value,lastname.value,password.value,email.value,phone.value)"><br>
+						<input id="signinbutton" [disabled]="!signupForm.form.valid" type="button" value="Sign up" (click)="registerUser(username.value,firstname.value,lastname.value,password.value,email.value,phone.value)"><br>
 						<a href="#" data-target="#log" data-toggle="modal" data-dismiss="modal">Already have an account? Login</a>
 					</div>
 				</form>

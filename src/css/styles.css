@@ -308,3 +308,35 @@ background-color: #F7F7F2;
 #userSuccess>strong{
   color:green;
 }
+#uname3>div{
+  color:red;
+}
+#uname22{
+  height:40px!important;
+}
+#uname22>input{
+  height:34px;
+}
+#uname3{
+height:30px!important;
+padding-top: 5px;
+margin-bottom: 5px;
+}
+#fnameError,#lnameError,#passwordError,#emailError,#phoneError{
+  color:red!important;
+  height:30px!important;
+  padding-top: 5px;
+  margin-bottom: 5px;
+}
+#signinbutton:disabled,#loginbutton:disabled,#postadbutton:disabled{
+  cursor: not-allowed;
+  pointer-events: all !important;
+}
+#usernameLoginError{
+  color:red!important;
+  margin-bottom: 5px;
+  height:40px!important;
+  padding-top: 5px;
+  
+  
+}

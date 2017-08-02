@@ -2,7 +2,7 @@
 		  <div class="modal-dialog">
 		    <!-- Modal content-->
 		    <div class="form-group" id="login">
-			    <form action="">
+			    <form #loginForm="ngForm" novalidate>
 					<h1>Login Form</h1>
 					<div [hidden]="showError" id="userExists" class="alert alert-danger">
   					<strong>Invalid credentials, please try again.</strong> 
@@ -11,14 +11,19 @@
   					<strong>Successfully logged in. Redirecting to home page...</strong> 
 					</div>
 					<div id="uname">
-						<input #username required class="form-control" type="text" placeholder="Username" required="" id="username" />
+						<input #username #usernameRef="ngModel" name="username" required class="form-control" type="text" placeholder="Username" required="" id="username" ngModel/>
+					</div>
+					<div id="usernameLoginError" *ngIf="usernameRef.errors" [hidden]="usernameRef.untouched && (usernameRef.valid || usernameRef.pristine)" class="alert alert-danger">
+							Please a username.
 					</div>
 					<div>
-						<input #password required class="form-control" type="password" placeholder="Password" required="" id="password" />
+						<input #password required #passwordRef="ngModel" class="form-control" name="password" type="password" placeholder="Password" required="" id="password" ngModel/>
+					</div>
+					<div id="usernameLoginError" *ngIf="passwordRef.errors" [hidden]="passwordRef.untouched && (passwordRef.valid || passwordRef.pristine)" class="alert alert-danger">
+							Please a password.
 					</div>
 					<div>
-						<input id="loginbutton" type="button" (click)="loginUser(username.value,password.value)" value="Log in"><br>
-						<a href="#">Lost your password?</a>
+						<input id="loginbutton" [disabled]="!loginForm.form.valid" type="button" (click)="loginUser(username.value,password.value)" value="Log in"><br>
 						<a data-dismiss="modal" id="closeModal" data-dismiss="modal"></a>
 						<a href="#sign" data-target="#sign" data-toggle="modal" data-dismiss="modal">Register</a>
 					</div>
