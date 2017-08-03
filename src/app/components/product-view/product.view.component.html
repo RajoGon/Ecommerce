@@ -98,7 +98,7 @@
 									Rajorshi.Gon@Xoriant.com
 								</div>
 				    		</div>-->
-				    		<!--<div class="row panel-body">
+				    		<div class="row panel-body">
 					    		<div class="col-md-6">
 									Message Seller
 								</div>
@@ -109,18 +109,21 @@
 										<div class="form-group">
 
 										  <div class="col-md-12">                     
-										    <textarea class="form-control" id="message" name="message">Send a message to the seller.</textarea>
+										    <textarea #message class="form-control" id="message" name="message"></textarea>
 										  </div>
-										</div>
-
-										
+										</div>									
 										<div class="form-group">
 										  <div class="col-md-12">
-										    <button id="sendmessage" name="sendmessage" class="btn btn-primary">Send</button>
+										    <button id="sendmessage" type="button" (click)="sendMessage(message.value)" name="sendmessage" class="btn btn-primary">Send</button>
 										  </div>
+											
 										</div>
+										<div [hidden]="messagesent" id="userSuccess" class="alert alert-success">
+  											<strong>Message sent successfully...</strong> 
+											</div>
+
 										</form>
 
 								</div>
-				    		</div>-->
+				    		</div>
 				    </div>

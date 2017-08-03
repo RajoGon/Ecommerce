@@ -12,6 +12,7 @@ export class RegisterService{
     public handleError:any;
     public loginToken:string;
     public username:any;
+    
     constructor(private _http: Http) {}
     sendUserData(userData:any){
       this.userData = userData;
@@ -56,9 +57,10 @@ export class RegisterService{
 
 
     getUserInfo(username:any,loginToken:any){
-        console.log('uname is ',username, ' token is ',loginToken);
+        console.log('Getting details', this.loginToken,' name is ',username)
+        //console.log('uname is ',username, ' token is ',this.loginToken);
         let headers = new Headers(); 
-        headers.append('auth-token',loginToken);
+        headers.append('auth-token',this.loginToken);
         let options = new RequestOptions({headers:headers});
         return this._http.get('http://192.168.3.144:9000/user?userId='+username,options).map((response: Response)=>response.json()); 
         }

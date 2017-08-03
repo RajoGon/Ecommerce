@@ -10,6 +10,7 @@ export class CategoryComponent {
     public categories:any;
     public categoryList:Array<any>=[];   
     public selectedCategory:any='Featured Products';
+    public searchedList:any[]=[];
     constructor(private productService:ProductService){
       this.productService.fetchCategory().subscribe(
           (response) => {               
@@ -29,6 +30,17 @@ export class CategoryComponent {
       this.selectedCategory = category;
       this.productService.sendCategory(this.selectedCategory);
       
+    }
+    searchAds(searchText:any){
+      this.productService.searchbyText(searchText);
+    //   .subscribe(
+    //   (response)=>{
+    //     this.searchedList=response.data.advertiseList;
+    //      this.productService.sendSearchedProducts(this.searchedList);      
+    //   },
+    //   (error)=>console.log('error')
+    // )
+    
     }
    
     

@@ -10,7 +10,7 @@
 							Product Name
 							</div>
 							<div class="col-md-6">
-							{{x.title| slice:0:15}}
+							{{x.title| slice:0:10}}
 							</div>
 						</div>
 						<div class="row desc">
@@ -53,7 +53,7 @@
 							</div>
 							<div class="row desc">
 								<div class="col-md-12">
-								{{x.description}} 
+								{{x.description| slice:0:15}} 
 								</div>
 							</div>
 						</div>

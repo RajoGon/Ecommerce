@@ -21,8 +21,8 @@
 				<div class="col-md-4 webdesigntuts-workshop">
 					<form action="" method="">	
 					<div>	    
-						<input type="search" placeholder="What are you looking for?">		    	
-						<button>Search</button>
+						<input type="search" #searchProduct placeholder="What are you looking for?">		    	
+						<button (click)="searchAds(searchProduct.value)">Search</button>
 					</div>
 					</form>
 				</div>

@@ -15,7 +15,7 @@ export class ProductDisplayComponent {
     constructor(private productService:ProductService,private router: Router){
       this.productService.getAllProducts().subscribe(
           (response) => {               
-              this.products=response.data.advertiseList;            
+              this.products=response.data.advertiseList;           
               this.generateCategories(null);
           },
           (error) => {
@@ -26,11 +26,7 @@ export class ProductDisplayComponent {
        this.selectedCategory=this.productService.getCategory();
        if(this.selectedCategory!=null){
         this.generateCategories(this.selectedCategory); 
-       }
-      //  else{
-      //    this.selectedCategory="";
-      //    this.generateCategories(this.selectedCategory); 
-      //  }         
+       }        
     }
     generateCategories(categories:any){  
       console.log("getting", categories);

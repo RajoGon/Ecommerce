@@ -18,7 +18,7 @@ constructor(private registerService: RegisterService, private router: Router) {
     }
     ngDoCheck(){
        this.loginToken=this.registerService.getToken();
-       console.log('In Nav ',this.childData,this.loginToken);      
+       //console.log('In Nav ',this.childData,this.loginToken);      
     }
     logoutUser(){
       this.logoutToken=this.loginToken;
