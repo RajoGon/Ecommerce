@@ -18,7 +18,7 @@ export class RegisterService{
       this.userData = userData;
       this.headers = new Headers({ 'Content-Type': 'application/json' }); 
       this.options = new RequestOptions({headers:this.headers}); 
-      return this._http.post('http://192.168.3.144:9000/register',this.userData, this.options)
+      return this._http.post('http://localhost:2002/register',this.userData, this.options)
                     .map((response: Response)=>response.json())
                     .catch(this.handleError);    
     }
@@ -29,9 +29,13 @@ export class RegisterService{
                              password:loginData.password
                                 };
         let headers = new Headers({ 'Content-Type': 'application/json' }); 
+        // headers.append('Access-Control-Allow-Origin', 'http://localhost:3000');
+        // headers.append('Access-Control-Allow-Credentials', 'true');
+
+
         let options = new RequestOptions({headers:headers});
 
-        return this._http.post('http://192.168.3.144:9000/login',this.loginDetails, options).map((response: Response)=>response.json()); 
+        return this._http.post('http://localhost:2002/login',this.loginDetails, options).map((response: Response)=>response.json()); 
     }
 
     sendToken(loginToken:any,userId:any){
@@ -51,7 +55,7 @@ export class RegisterService{
     let headers = new Headers(); 
     headers.append('auth-token',loginToken);
     let options = new RequestOptions({headers:headers});
-    return this._http.delete('http://192.168.3.144:9000/logout',options)
+    return this._http.delete('http://localhost:2002/logout',options)
                     .map((response: Response)=>response.json());   
     }
 
@@ -62,7 +66,7 @@ export class RegisterService{
         let headers = new Headers(); 
         headers.append('auth-token',this.loginToken);
         let options = new RequestOptions({headers:headers});
-        return this._http.get('http://192.168.3.144:9000/user?userId='+username,options).map((response: Response)=>response.json()); 
+        return this._http.get('http://localhost:2002/user?userId='+username,options).map((response: Response)=>response.json()); 
         }
 
 }

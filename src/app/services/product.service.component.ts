@@ -12,7 +12,7 @@ export class ProductService{
     public messageToSeller:any;
     constructor(private _http: Http) {}
     fetchCategory(){
-        return this._http.get('http://192.168.3.144:9000/categories').map((response: Response)=>response.json()); 
+        return this._http.get('http://localhost:2002/categories').map((response: Response)=>response.json()); 
     }
     
     getUserProducts(loginToken:any){
@@ -20,7 +20,7 @@ export class ProductService{
         headers.append('auth-token',loginToken);
        // console.log('getting specific with token ',loginToken);
         let options = new RequestOptions({ headers: headers });
-        return this._http.get('http://192.168.3.144:9000/posts',options).map((response: Response)=>response.json());
+        return this._http.get('http://localhost:2002/posts',options).map((response: Response)=>response.json());
     }
     sendCategory(category:any){
         this.selectedCategory = category;
@@ -49,7 +49,7 @@ export class ProductService{
         let options = new RequestOptions({ headers: headers });
         //console.log('getting product with id',postId,loginToken);
         
-        return this._http.get('http://192.168.3.144:9000/viewAd?postId='+postId,options).map((response: Response)=> response.json());
+        return this._http.get('http://localhost:2002/viewAd?postId='+postId,options).map((response: Response)=> response.json());
     }
     postNewAd(token:any, title:string,category:any,description:any,uname:any){
         let ad = {
@@ -63,7 +63,7 @@ export class ProductService{
             headers.append('Content-Type', 'application/json');
             headers.append('auth-token',token);
             let options = new RequestOptions({ headers: headers });
-            return this._http.post('http://192.168.3.144:9000/postAd',JSON.stringify(ad), options).map((response: Response)=> response.json());
+            return this._http.post('http://localhost:2002/postAd',JSON.stringify(ad), options).map((response: Response)=> response.json());
 }
 updateAdOnServer(loginToken:any,productUpdate:any){
     let headers = new Headers();
@@ -79,14 +79,14 @@ updateAdOnServer(loginToken:any,productUpdate:any){
             headers.append('auth-token',loginToken);
             //console.log('updating ad ',newad,'with token ',loginToken );
             let options = new RequestOptions({ headers: headers });
-            return this._http.put('http://192.168.3.144:9000/postAd',JSON.stringify(newad), options).map((response: Response)=> response.json());
+            return this._http.put('http://localhost:2002/postAd',JSON.stringify(newad), options).map((response: Response)=> response.json());
             
 }
 getActions(loginToken:any){
     let headers = new Headers();
     headers.append('auth-token',loginToken);
     let options = new RequestOptions({ headers: headers });
-    return this._http.get('http://192.168.3.144:9000/actions',options).map((response: Response)=> response.json());
+    return this._http.get('http://localhost:2002/actions',options).map((response: Response)=> response.json());
 }
 
 
@@ -97,7 +97,7 @@ deleteAdOnServer(loginToken:any,productUpdate:any){
             headers.append('auth-token',loginToken);
             //console.log('Deleting ad with token ',loginToken,'and id = ',productUpdate.postId );
             let options = new RequestOptions({ headers: headers });
-            return this._http.delete('http://192.168.3.144:9000/post?postId='+productUpdate.postId, options).map((response: Response)=> response.json());
+            return this._http.delete('http://localhost:2002/post?postId='+productUpdate.postId, options).map((response: Response)=> response.json());
             
 }
 
@@ -115,7 +115,7 @@ searchbyText(text:any){
 // }
 getAllProducts(){
 
-        return this._http.get('http://192.168.3.144:9000/posts/search').map((response: Response)=>response.json());
+        return this._http.get('http://localhost:2002/posts/search').map((response: Response)=>response.json());
 }
 sendMessagetoSeller(Message:any,postid:any,loginToken:any){
 console.log('Sending message ',Message,'with token ',loginToken, 'and post id', postid );
@@ -128,7 +128,7 @@ console.log('Sending message ',Message,'with token ',loginToken, 'and post id', 
             headers.append('auth-token',loginToken);
             
             let options = new RequestOptions({ headers: headers });
-            return this._http.post('http://192.168.3.144:9000/message',JSON.stringify(this.messageToSeller), options).map((response: Response)=> response.json());
+            return this._http.post('http://localhost:2002/message',JSON.stringify(this.messageToSeller), options).map((response: Response)=> response.json());
 
 }
 

@@ -29,7 +29,7 @@ export class MyAccountComponent {
     public actionList:Array<any>=[];
     public postSuccess:any=true;
     public currentAction:any="Post a new ad";
-    productUpdate:object= {
+    productUpdate:Object= {
                             postId:null,
                             status:"Open",
                             name:this.productName,
@@ -81,8 +81,7 @@ export class MyAccountComponent {
           this.productService.getActions(this.loginToken).subscribe(
           (response) => {    
             this.actionList=response.data.actionList;
-            console.log('actions are ', this.actionList);
-            
+            console.log('actions are ', this.actionList);           
           },        
               
           
@@ -103,12 +102,13 @@ export class MyAccountComponent {
         let username=this.registerService.getUser();
     
       for(let x of this.products){
-        if(x.userId == username ){
-          x.createdDate=new Date(x.createdDate).toLocaleDateString('en-GB');
-          this.productList.push(x);
-        }
+        // if(x.userId == username ){
+        //   x.createdDate=new Date(x.createdDate).toLocaleDateString('en-GB');
+        //   this.productList.push(x);
+        // }
+        this.productList.push(x);
       }
-      //console.log('products are ',this.productList,' of user ',username);
+      console.log('products are ',this.productList,' of user ',username);
       }
 
     ngDoCheck(){
