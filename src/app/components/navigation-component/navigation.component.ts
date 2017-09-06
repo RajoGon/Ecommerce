@@ -9,26 +9,70 @@ import { Router } from '@angular/router';
   
 })
 export class NavigationComponent { 
-  public loginToken:any=null;
+  public loginToken:any="";
   public childData: string=null;
   public logoutToken:any=null;
+  public showLogout:boolean = false;
 
 constructor(private registerService: RegisterService, private router: Router) { 
-        
+        console.log("Inside contruct");
+        this.loginToken=localStorage.getItem("auth-token");
+        console.log("login token",this.loginToken);
+        if(this.loginToken===""){
+          this.showLogout = true;
+          console.log("showlogout", this.showLogout,this.loginToken);
+        }else{
+          this.showLogout = false;
+          console.log("showlogout", this.showLogout,this.loginToken);
+        }
     }
     ngDoCheck(){
-       this.loginToken=this.registerService.getToken();
-       //console.log('In Nav ',this.childData,this.loginToken);      
+       this.loginToken=localStorage.getItem("auth-token");
+        console.log("login token",this.loginToken);
+        if(this.loginToken===""){
+          this.showLogout = true;
+          console.log("showlogout", this.showLogout,this.loginToken);
+        }else{
+          this.showLogout = false;
+          console.log("showlogout", this.showLogout,this.loginToken);
+        }
+
+       console.log('In Nav ',this.loginToken);      
+    }
+    ngOnInit(){
+      this.loginToken=localStorage.getItem("auth-token");
+        console.log("login token",this.loginToken);
+        if(this.loginToken===""){
+          this.showLogout = true;
+          console.log("showlogout", this.showLogout,this.loginToken);
+        }else{
+          this.showLogout = false;
+          console.log("showlogout", this.showLogout,this.loginToken);
+        }
     }
     logoutUser(){
+      console.log("Logging out");
       this.logoutToken=this.loginToken;
+      
       this.loginToken=null;
       this.registerService.logoutUser(this.logoutToken).subscribe(         
           (response) => {
+             this.loginToken=localStorage.getItem("auth-token");
+              console.log("login token",this.loginToken);
+              if(this.loginToken===""){
+                this.showLogout = true;
+                console.log("showlogout", this.showLogout,this.loginToken);
+              }else{
+                this.showLogout = false;
+                console.log("showlogout", this.showLogout,this.loginToken);
+              }
+            this.registerService.sendToken("","");
+            this.router.navigate(['']);
           },
           (error) => {
           });
-           this.registerService.sendToken(null,null);
+           this.loginToken="";
+           this.registerService.sendToken("","");
           this.router.navigate(['']);
     }
  }

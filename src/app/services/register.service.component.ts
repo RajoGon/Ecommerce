@@ -13,7 +13,15 @@ export class RegisterService{
     public loginToken:string;
     public username:any;
     
-    constructor(private _http: Http) {}
+    constructor(private _http: Http) {
+
+    }
+    ngOnInit(){
+        
+        localStorage.setItem("auth-token","");
+        localStorage.setItem("userId","");
+        console.log("Register init service",localStorage.getItem("auth-token"));
+    }
     sendUserData(userData:any){
       this.userData = userData;
       this.headers = new Headers({ 'Content-Type': 'application/json' }); 
@@ -41,19 +49,25 @@ export class RegisterService{
     sendToken(loginToken:any,userId:any){
         this.loginToken = loginToken;
         this.username=userId;
+        localStorage.setItem("auth-token",this.loginToken);
+        localStorage.setItem("userId", this.username);
         console.log('In service', this.loginToken,this.username);
         
     }
     getToken(){
-        return this.loginToken;
+        console.log("get token",localStorage.getItem("auth-token"));
+        return localStorage.getItem("auth-token");
+        //return this.loginToken;
     }
     getUser(){
-        return this.username;
+        return localStorage.getItem("userId");
+        //return this.username;
     }
     logoutUser(loginToken:any){
-
+    localStorage.setItem("auth-token","");
+    localStorage.setItem("userId","");
     let headers = new Headers(); 
-    headers.append('auth-token',loginToken);
+    headers.append('auth-token',localStorage.getItem("auth-token"));
     let options = new RequestOptions({headers:headers});
     return this._http.delete('http://localhost:2002/logout',options)
                     .map((response: Response)=>response.json());   
@@ -61,12 +75,12 @@ export class RegisterService{
 
 
     getUserInfo(username:any,loginToken:any){
-        console.log('Getting details', this.loginToken,' name is ',username)
+        console.log('Getting details', localStorage.getItem("auth-token"),' name is ',localStorage.getItem("userId"))
         //console.log('uname is ',username, ' token is ',this.loginToken);
         let headers = new Headers(); 
-        headers.append('auth-token',this.loginToken);
+        headers.append('auth-token',localStorage.getItem("auth-token"));
         let options = new RequestOptions({headers:headers});
-        return this._http.get('http://localhost:2002/user?userId='+username,options).map((response: Response)=>response.json()); 
+        return this._http.get('http://localhost:2002/user?userId='+localStorage.getItem("userId"),options).map((response: Response)=>response.json()); 
         }
 
 }

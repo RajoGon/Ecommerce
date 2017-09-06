@@ -24,6 +24,7 @@ export class ProductService{
     }
     sendCategory(category:any){
         this.selectedCategory = category;
+        
        // console.log("Category in service", this.selectedCategory);
         
     }
@@ -51,6 +52,17 @@ export class ProductService{
         
         return this._http.get('http://localhost:2002/viewAd?postId='+postId,options).map((response: Response)=> response.json());
     }
+
+    searchByText(searchText:String){
+        let headers = new Headers();
+        let options = new RequestOptions({ headers: headers });
+        console.log('getting product with search text',searchText);       
+        return this._http.get('http://localhost:2002/posts/search/text?searchText='+searchText,options).map((response: Response)=> response.json());
+    }
+
+
+
+
     postNewAd(token:any, title:string,category:any,description:any,uname:any){
         let ad = {
             "title" : title,
@@ -88,7 +100,12 @@ getActions(loginToken:any){
     let options = new RequestOptions({ headers: headers });
     return this._http.get('http://localhost:2002/actions',options).map((response: Response)=> response.json());
 }
-
+getDateConditions(){
+    let headers = new Headers();
+    headers.append('auth-token',sessionStorage.getItem("auth-token"));
+    let options = new RequestOptions({ headers: headers });
+    return this._http.get('http://localhost:2002/dateconditions',options).map((response: Response)=> response.json());
+}
 
 
 

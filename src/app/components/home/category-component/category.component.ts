@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import{ProductService} from '../../../services/product.service.component';
 
 @Component({
@@ -11,7 +12,7 @@ export class CategoryComponent {
     public categoryList:Array<any>=[];   
     public selectedCategory:any='Featured Products';
     public searchedList:any[]=[];
-    constructor(private productService:ProductService){
+    constructor(private productService:ProductService, private router: Router){
       this.productService.fetchCategory().subscribe(
           (response) => {               
               this.categories=response.data.itemList;            
@@ -32,7 +33,8 @@ export class CategoryComponent {
       
     }
     searchAds(searchText:any){
-      this.productService.searchbyText(searchText);
+      //this.productService.searchbyText(searchText);
+      this.router.navigate(['/'],{ queryParams: { search:searchText}});
     //   .subscribe(
     //   (response)=>{
     //     this.searchedList=response.data.advertiseList;

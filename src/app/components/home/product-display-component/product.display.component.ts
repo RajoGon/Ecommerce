@@ -1,6 +1,6 @@
 import { Component,OnInit,OnChanges } from '@angular/core';
 import{ProductService} from '../../../services/product.service.component';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute,Params } from '@angular/router';
 import {Pipe} from '@angular/core'
 
 @Component({
@@ -12,7 +12,8 @@ export class ProductDisplayComponent {
     public products:any;
     public productList:Array<any>=[];
     public selectedCategory:any=null;
-    constructor(private productService:ProductService,private router: Router){
+    public searchText:String=null;
+    constructor(private productService:ProductService,private router: Router, private activatedRoute: ActivatedRoute){
       this.productService.getAllProducts().subscribe(
           (response) => {               
               this.products=response.data.advertiseList;           
@@ -21,13 +22,44 @@ export class ProductDisplayComponent {
           (error) => {
             console.log('Error');
           });
+    
     }
+
+
     ngDoCheck(){
        this.selectedCategory=this.productService.getCategory();
        if(this.selectedCategory!=null){
         this.generateCategories(this.selectedCategory); 
-       }        
+       }           
+        
     }
+    ngOnInit(){
+          this.activatedRoute.queryParams.subscribe(
+             (queryParam: any) => {
+               this.searchText = queryParam['search'];
+               if(this.searchText!=null){
+                  this.productService.searchByText(this.searchText).subscribe(
+                      (response) => {               
+                      this.products=response.data.advertiseList;           
+                        this.generateCategories(null);
+                        },
+                      (error) => {
+                        console.log('Error');
+                    });
+            console.log("Search text",this.searchText);}
+               }
+                  
+         );
+        
+    }
+
+
+    // subscribe to router event
+   
+
+
+
+
     generateCategories(categories:any){  
       console.log("getting", categories);
        this.productList=[];
@@ -44,7 +76,7 @@ export class ProductDisplayComponent {
             }
       }
       }
-
+    this.selectedCategory=null;
     }
     goToProduct(productToView:any){
       let productToSend:any;

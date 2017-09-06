@@ -30,7 +30,12 @@ export class LoginComponent {
           (response) => {
                 
               this.loginToken=response.data['auth-token'];
+              
+              localStorage.setItem("auth-token",this.loginToken);
+
               this.username=response.data.userId;
+              localStorage.setItem("userId", this.username);
+
               if(this.loginToken==null){
                 this.showError=false;
                  this.showSuccess = true;
